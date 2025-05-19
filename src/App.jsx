@@ -9,6 +9,7 @@ import PublicForm from "./pages/PublicForm";
 import Responses from "./pages/Responses";
 import Home from "./pages/Home";
 import PrivateRoute from "./components/PrivateRoute";
+import EditForm from "./pages/EditForm";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
       <Route path="/forms/:id/questions" element={<AddQuestions />} />
       <Route path="/forms/:link" element={<PublicForm />} />
       <Route path="/forms/:id/responses" element={<Responses />} />
+      <Route path="/forms/:id/edit" element={<EditForm  />} />
+
     </Routes>
   );
 }
