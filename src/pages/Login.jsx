@@ -54,8 +54,8 @@ const LoginPage = () => {
                 </div>
 
                 <div className="mb-5">
-                  <h2 className="fw-bold mb-2">Hello Again!</h2>
-                  <p className="text-secondary">Welcome back, you've been missed!</p>
+                  <h2 className="fw-bold mb-2 text-center">Hello Again!</h2>
+                  <p className="text-center">Welcome back, you've been missed!</p>
                 </div>
 
                 <form onSubmit={handleSubmit}>

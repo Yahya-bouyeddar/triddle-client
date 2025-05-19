@@ -10,17 +10,10 @@ const HomePage = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -76,7 +69,10 @@ const HomePage = () => {
             <p className="lead mb-4 text-secondary">Fast, modern, and intuitive platform to create and manage forms effortlessly.</p>
             <button
               className="btn btn-primary btn-lg px-4 py-2 d-inline-flex align-items-center"
-              onClick={() => navigate("/create-form")}
+              onClick={() => {
+                if (isLoggedIn) navigate("/create-form");
+                else navigate("/login");
+              }}
             >
               Get Started <ArrowRight className="ms-2" size={20} />
             </button>
@@ -139,14 +135,16 @@ const HomePage = () => {
           <p className="lead mb-4">Join thousands of users who are already creating amazing forms</p>
           <button
             className="btn btn-light btn-lg px-4"
-            onClick={() => navigate("/create-form")}
+            onClick={() => {
+              if (isLoggedIn) navigate("/create-form");
+              else navigate("/login");
+            }}
           >
             Create Your First Form
           </button>
         </div>
       </div>
 
-      
       <footer className="bg-dark text-white py-4 mt-auto">
         <div className="container text-center">
           <p className="mb-0">© {new Date().getFullYear()} FormBuilder. All rights reserved.</p>
