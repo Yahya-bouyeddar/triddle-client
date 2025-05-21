@@ -24,7 +24,7 @@ const DashboardPage = () => {
       } catch (error) {
         console.error("Erreur lors du chargement des formulaires", error);
       }
-      setLoading(false); 
+      setLoading(false);
     };
 
     fetchForms();
@@ -33,7 +33,6 @@ const DashboardPage = () => {
   return (
     <div className="container-fluid">
       <div className="row">
-        {/* Sidebar */}
         <div
           className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
           style={{ minHeight: "100vh" }}
@@ -55,14 +54,11 @@ const DashboardPage = () => {
                   My Forms
                 </a>
               </li>
-              
             </ul>
           </div>
         </div>
 
-        
         <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-         
           <div className="d-flex justify-content-end align-items-center mt-4 mb-3">
             <Link
               to="/"
@@ -93,7 +89,6 @@ const DashboardPage = () => {
             </div>
           </div>
 
-          
           {loading ? (
             <div
               className="d-flex flex-column align-items-center justify-content-center"
