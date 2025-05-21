@@ -142,6 +142,7 @@ const CreateFormPage = () => {
                       onChange={(e) => setFormDescription(e.target.value)}
                       placeholder="Form Description (optional)"
                       rows="2"
+                      
                     ></textarea>
                   </div>
                 </div>
@@ -228,6 +229,7 @@ const CreateFormPage = () => {
                             type="text"
                             className="form-control"
                             placeholder="Short answer text"
+                            disabled
                           />
                         )}
                         {question.type === "textarea" && (
@@ -235,6 +237,7 @@ const CreateFormPage = () => {
                             className="form-control"
                             placeholder="Long answer text"
                             rows="3"
+                            disabled
                           ></textarea>
                         )}
                         {question.type === "email" && (
@@ -242,6 +245,7 @@ const CreateFormPage = () => {
                             type="email"
                             className="form-control"
                             placeholder="email@example.com"
+                            disabled
                           />
                         )}
                         {question.type === "number" && (
@@ -249,10 +253,12 @@ const CreateFormPage = () => {
                             type="number"
                             className="form-control"
                             placeholder="0"
+                            disabled
                           />
                         )}
                         {question.type === "date" && (
-                          <input type="date" className="form-control" />
+                          <input type="date" className="form-control" disabled/>
+                          
                         )}
                       </div>
 
