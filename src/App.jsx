@@ -8,22 +8,58 @@ import AddQuestions from "./pages/AddQuestions";
 import PublicForm from "./pages/PublicForm";
 import Responses from "./pages/Responses";
 import Home from "./pages/Home";
-import PrivateRoute from "./components/PrivateRoute";
+// import {PrivateRoute} from "./components/PrivateRoute";
 import EditForm from "./pages/EditForm";
+import { PrivateRoute } from "./components/PrivateRoute";
+import { GuestRoute } from "./components/GuestRoute";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/create-form" element={<CreateForm />} />
-      <Route path="/forms/:id/questions" element={<AddQuestions />} />
+      <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
+      <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/create-form"
+        element={
+          <PrivateRoute>
+            <CreateForm />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/forms/:id/questions"
+        element={
+          <PrivateRoute>
+            <AddQuestions />
+          </PrivateRoute>
+        }
+      />
       <Route path="/forms/:link" element={<PublicForm />} />
-      <Route path="/forms/:id/responses" element={<Responses />} />
-      <Route path="/forms/:id/edit" element={<EditForm  />} />
-
+      <Route
+        path="/forms/:id/responses"
+        element={
+          <PrivateRoute>
+            <Responses />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/forms/:id/edit"
+        element={
+          <PrivateRoute>
+            <EditForm />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 }
