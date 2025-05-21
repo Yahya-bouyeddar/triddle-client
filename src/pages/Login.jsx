@@ -3,12 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Eye, EyeOff } from 'lucide-react';
 import api from '../api';
+import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +20,7 @@ const LoginPage = () => {
         password,
       });
 
-      localStorage.setItem('token', res.data.token);
+      login(res.data.token, res.data.user); // Update context
       localStorage.setItem('user', JSON.stringify(res.data.user));
 
       navigate('/dashboard');
